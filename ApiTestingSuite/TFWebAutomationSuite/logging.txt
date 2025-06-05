@@ -1,0 +1,74 @@
+Request method:	POST
+Request URI:	http://ingress-gateway.gaiansolutions.com/iam-service/v1.0/tenants/signup
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Headers:		Accept=*/*
+				Content-Type=application/json; charset=UTF-8
+Cookies:		<none>
+Multiparts:		<none>
+Body:
+{
+    "email": "Test@gatestautomation.com"
+}
+HTTP/1.1 200 OK
+access-control-allow-origin: *
+access-control-allow-methods: POST, GET, OPTIONS, DELETE, PUT
+access-control-max-age: 3600
+access-control-allow-headers: x-requested-with, authorization, Content-Type, Authorization, credential, X-XSRF-TOKEN,Access-Control-Allow-Origin, X-Auth-Token
+x-content-type-options: nosniff
+x-xss-protection: 1; mode=block
+cache-control: no-cache, no-store, max-age=0, must-revalidate
+pragma: no-cache
+expires: 0
+x-frame-options: DENY
+content-type: application/json;charset=UTF-8
+date: Tue, 18 Apr 2023 05:28:54 GMT
+x-envoy-upstream-service-time: 1186
+server: istio-envoy
+transfer-encoding: chunked
+
+{
+    "msg": "Verify your email address. We just sent an OTP to your email address."
+}
+Request method:	POST
+Request URI:	http://ingress-gateway.gaiansolutions.com/iam-service/v1.0/tenants/otp-verification
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Headers:		Accept=*/*
+				Content-Type=application/json; charset=UTF-8
+Cookies:		<none>
+Multiparts:		<none>
+Body:
+{
+    "otp": 100000,
+    "email": "Joson4@gatestautomation.com"
+}
+HTTP/1.1 500 Internal Server Error
+access-control-allow-origin: *
+access-control-allow-methods: POST, GET, OPTIONS, DELETE, PUT
+access-control-max-age: 3600
+access-control-allow-headers: x-requested-with, authorization, Content-Type, Authorization, credential, X-XSRF-TOKEN,Access-Control-Allow-Origin, X-Auth-Token
+x-content-type-options: nosniff
+x-xss-protection: 1; mode=block
+cache-control: no-cache, no-store, max-age=0, must-revalidate
+pragma: no-cache
+expires: 0
+x-frame-options: DENY
+content-type: application/json;charset=UTF-8
+date: Tue, 18 Apr 2023 05:28:55 GMT
+x-envoy-upstream-service-time: 9
+server: istio-envoy
+transfer-encoding: chunked
+
+{
+    "timestamp": 1681795735991,
+    "origin": "iam-service",
+    "errorCode": 5001,
+    "status": "INTERNAL_SERVER_ERROR"
+}

@@ -1,0 +1,172 @@
+{
+	"variables": [],
+	"info": {
+		"name": "WalmartAPI",
+		"_postman_id": "3fca564a-8d0d-f9e9-02fa-dc4fd064b50d",
+		"description": "Collection containing walmart API requests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "getProductQuery",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Checking the status code\"]= responseCode.code===200;",
+							"tests[\"Checking the query value\"] = responseBody.has(\"ipod\")",
+							"",
+							"",
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"",
+							"",
+							"",
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"ipod\");",
+							"});",
+							"",
+							"var respBody = JSON.parse(responseBody);",
+							"var numItem = respBody.numItems;",
+							"",
+							"console.log(\"The extracted value is: \"+numItem);"
+						]
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"console.log('Starting the test!!');",
+							"",
+							"//creating environment variables",
+							"postman.setEnvironmentVariable('rate_1','20');",
+							"postman.setEnvironmentVariable('rate_2','30');",
+							"",
+							"//creating a global variable",
+							"postman.setGlobalVariable('gbl_rate','1000');",
+							"",
+							"//getting env & gbl values & printing to console",
+							"var val1=postman.getEnvironmentVariable('rate_1');",
+							"var val2=postman.getEnvironmentVariable('rate_2');",
+							"",
+							"var gbl1 = postman.getGlobalVariable('gbl_rate');",
+							"console.log(\"The values are: \"+val1 +\" \"+val2+\" \"+gbl1);"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "{{URL}}/search?query=ipod&format=xml&apiKey={{API_KEY}}",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"search"
+					],
+					"query": [
+						{
+							"key": "query",
+							"value": "ipod",
+							"equals": true
+						},
+						{
+							"key": "format",
+							"value": "xml",
+							"equals": true
+						},
+						{
+							"key": "apiKey",
+							"value": "{{API_KEY}}",
+							"equals": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "getProductQuery_xml",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"console.log(responseBody);",
+							"var xmlToJson = xml2Json(responseBody);",
+							"console.log(xmlToJson);"
+						]
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"console.log('Starting the test!!');",
+							"",
+							"//creating environment variables",
+							"postman.setEnvironmentVariable('rate_1','20');",
+							"postman.setEnvironmentVariable('rate_2','30');",
+							"",
+							"//creating a global variable",
+							"postman.setGlobalVariable('gbl_rate','1000');",
+							"",
+							"//getting env & gbl values & printing to console",
+							"var val1=postman.getEnvironmentVariable('rate_1');",
+							"var val2=postman.getEnvironmentVariable('rate_2');",
+							"",
+							"var gbl1 = postman.getGlobalVariable('gbl_rate');",
+							"console.log(\"The values are: \"+val1 +\" \"+val2+\" \"+gbl1);"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "{{URL}}/search?query=ipod&format=xml&apiKey={{API_KEY}}",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"search"
+					],
+					"query": [
+						{
+							"key": "query",
+							"value": "ipod",
+							"equals": true
+						},
+						{
+							"key": "format",
+							"value": "xml",
+							"equals": true
+						},
+						{
+							"key": "apiKey",
+							"value": "{{API_KEY}}",
+							"equals": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
